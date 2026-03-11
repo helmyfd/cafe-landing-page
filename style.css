@@ -1,0 +1,339 @@
+/* =======================================================
+   1. VARIABEL & RESET
+   ======================================================= */
+:root {
+    --coklat-kopi: #4a2c11; 
+    --coklat-prefooter: #5c3415; 
+    --latte: #f5ebd9; 
+    --coklat-muda: #d4b895; 
+    --krem-terang: #fdfbf7; 
+    --teks-gelap: #2b1810; 
+    --putih-teks: #ffffff; 
+    --peach-tombol: #fca079; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--latte);
+    color: var(--teks-gelap);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* =======================================================
+   2. GLOBAL LAYOUT (CONTAINER)
+   ======================================================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* =======================================================
+   3. HERO SECTION & NAVBAR (FLEXBOX TERBARU)
+   ======================================================= */
+.hero {
+    background-image: url('assets/cafe.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--putih-teks);
+    height: 100vh;
+}
+
+/* Pengaturan Flexbox Vertikal: Atas, Tengah, Bawah */
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Membuat jarak otomatis ke atas dan bawah */
+    padding: 40px 50px; /* Padding tepi layar (Kiri, Kanan, Atas, Bawah) */
+}
+
+/* Navbar Flexbox (Kiri Atas) */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--putih-teks);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--coklat-muda); }
+
+/* Hero Center (Tengah) */
+.hero-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-center h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-center p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    max-width: 650px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.btn-pesan {
+    background-color: var(--coklat-kopi);
+    color: var(--putih-teks);
+    padding: 15px 35px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    border: 2px solid var(--coklat-kopi);
+    transition: all 0.3s ease;
+}
+
+.btn-pesan:hover {
+    background-color: var(--latte);
+    color: var(--coklat-kopi);
+    border-color: var(--latte);
+}
+
+/* Hero Bottom Info (Kiri & Kanan Bawah) */
+.hero-bottom-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.jam-buka {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.baris-jam {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.baris-jam.terang { background-color: var(--krem-terang); color: var(--teks-gelap); }
+.baris-jam.gelap { background-color: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.5); }
+
+.quote-hero {
+    max-width: 450px;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* =======================================================
+   4. ALBUM ROLLING
+   ======================================================= */
+.album-section {
+    padding-top: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.album-track {
+    display: inline-block;
+    animation: jalan-kiri 20s linear infinite;
+}
+
+.album-track:hover { animation-play-state: paused; }
+
+.foto-album {
+    height: 250px;
+    width: auto;
+    border-radius: 12px;
+    margin-right: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+@keyframes jalan-kiri {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* =======================================================
+   5. MENU FAVORIT & MENU LIST
+   ======================================================= */
+.menu-section {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.menu-section h2 {
+    font-size: 2.5rem;
+    color: var(--coklat-kopi);
+    margin-bottom: 50px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.menu-card {
+    background-color: var(--latte);
+    border: 2px solid var(--coklat-muda);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(74, 44, 17, 0.15);
+    border-color: var(--coklat-kopi);
+}
+
+.foto-menu {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: var(--coklat-muda);
+}
+
+.menu-card h3 { color: var(--coklat-kopi); font-size: 1.5rem; margin-bottom: 10px; }
+.menu-card p { font-size: 0.95rem; opacity: 0.8; }
+
+/* Menu Lengkap Layout */
+.daftar-menu-section { padding: 40px 0 100px; }
+
+.daftar-menu-container {
+    background-color: var(--krem-terang);
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 50px;
+}
+
+.kategori-menu { flex: 1; }
+
+.kategori-menu h3 {
+    font-size: 1.8rem;
+    color: var(--coklat-kopi);
+    border-bottom: 2px solid var(--coklat-muda);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.item-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.nama-item { font-weight: 600; padding-right: 10px; background-color: var(--krem-terang); z-index: 2; }
+.garis-titik { flex-grow: 1; border-bottom: 2px dotted var(--coklat-muda); position: relative; top: -5px; }
+.harga-item { font-weight: bold; color: var(--coklat-kopi); padding-left: 10px; background-color: var(--krem-terang); z-index: 2; }
+
+/* =======================================================
+   6. CTA / PRE-FOOTER (KONTAK BISNIS)
+   ======================================================= */
+.cta-section {
+    background-color: var(--coklat-prefooter);
+    color: var(--putih-teks);
+    padding: 100px 0;
+}
+
+.cta-section h2 { font-size: 2.5rem; margin-bottom: 40px; line-height: 1.3; }
+.cta-subtitle { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
+
+.btn-contact {
+    display: inline-block;
+    background-color: var(--peach-tombol);
+    color: var(--teks-gelap);
+    padding: 12px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-contact:hover { transform: scale(1.05); }
+
+/* =======================================================
+   7. FOOTER
+   ======================================================= */
+.main-footer {
+    background-color: var(--krem-terang);
+    padding: 50px 0;
+    border-top: 1px solid var(--coklat-muda);
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-left .logo-icon { font-size: 2.5rem; margin-bottom: 10px; }
+.footer-left .brand-name { font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
+.business-info { font-size: 0.95rem; opacity: 0.8; }
+
+.sosmed-links { display: flex; gap: 20px; }
+.sosmed-links a { color: var(--teks-gelap); text-decoration: none; font-weight: 700; transition: color 0.3s; }
+.sosmed-links a:hover { color: var(--coklat-kopi); }
+
+/* =======================================================
+   8. RESPONSIVE (MOBILE)
+   ======================================================= */
+@media (max-width: 768px) {
+    .hero-overlay { padding: 20px; }
+    .hero-bottom-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .footer-flex, .daftar-menu-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .hero-center h1 { font-size: 2.8rem; }
+    .cta-section h2 { font-size: 1.8rem; }
+}   
+
