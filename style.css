@@ -43,7 +43,7 @@ body {
    3. HERO SECTION & NAVBAR (FLEXBOX TERBARU)
    ======================================================= */
 .hero {
-    background-image: url('assets/cafe.jpg');
+    background-image: url('assets/cafe.webp');
     background-size: cover;
     background-position: center;
     color: var(--putih-teks);
