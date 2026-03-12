@@ -158,33 +158,62 @@ body {
 }
 
 /* =======================================================
-   4. ALBUM ROLLING
+   4. GALERI BENTO BOX (FULL WIDTH)
    ======================================================= */
-.album-section {
-    padding-top: 40px;
-    overflow: hidden;
-    white-space: nowrap;
+.album-section-full {
+    padding: 20px 0; /* Jarak background atas-bawah */
+    background-color: var(--krem-terang); /* Bisa disesuaikan dengan warna background web Anda */
+    width: 100%;
 }
 
-.album-track {
-    display: inline-block;
-    animation: jalan-kiri 20s linear infinite;
+.bento-gallery-full {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 350px); /* Saya tinggikan jadi 350px agar fotonya lebih gagah saat layar lebar */
+    gap: 5px; /* Ini dia "garis kecil" pemisahnya (15 pixel) */
+    padding: 0 15px; /* Memberi sedikit jarak 15px di ujung paling kiri dan kanan layar agar estetik */
+    width: 100%;
+    max-width: 1600px; /* Batas maksimal di layar yang sangat besar (seperti TV) agar tidak pecah */
+    margin: 0 auto; /* Tetap ke tengah jika dibuka di monitor super lebar */
 }
 
-.album-track:hover { animation-play-state: paused; }
-
-.foto-album {
-    height: 250px;
-    width: auto;
-    border-radius: 12px;
-    margin-right: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    object-fit: cover;
+/* Kotak pembungkus gambar */
+.bento-item {
+    border-radius: 11px; /* Sudut membulat seperti di referensi gambar Anda */
+    overflow: hidden; 
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Bayangan tipis */
 }
 
-@keyframes jalan-kiri {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.5s ease; 
+}
+
+/* Efek zoom saat disentuh kursor */
+.bento-item:hover img {
+    transform: scale(1.50); /* Zoom diperhalus */
+}
+
+/* Mengatur Posisi Asimetris Masing-Masing Foto */
+.bento-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.bento-2 { grid-column: 3 / 5; grid-row: 1 / 2; }
+.bento-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
+.bento-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
+
+/* CSS Bento untuk Layar HP */
+@media (max-width: 768px) {
+    .bento-gallery-full {
+        grid-template-columns: 1fr; /* Jadi 1 kolom bersusun ke bawah */
+        grid-template-rows: auto;
+    }
+    .bento-item {
+        grid-column: 1 / -1 !important; 
+        grid-row: auto !important;
+        height: 300px; /* Tinggi seragam di HP */
+    }
 }
 
 /* =======================================================
