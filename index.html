@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kafe Padang Hijau</title>
+    
+    <title>Kafe Padang Hijau - Ketenangan Alam dalam Secangkir Kopi</title>
+    <meta name="description" content="Kafe Padang Hijau menawarkan artisan coffee, crispy waffle, dan suasana asri untuk relaksasi Anda. Kunjungi kami untuk pengalaman rasa yang tak terlupakan.">
+    
+    <meta property="og:title" content="Kafe Padang Hijau">
+    <meta property="og:description" content="Rasakan ketenangan alam di setiap tegukan. Paduan sempurna antara suasana asri dan rasa yang tak terlupakan.">
+    <meta property="og:image" content="assets/cafe.webp">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
 </head>
@@ -13,7 +21,10 @@
         <div class="hero-overlay">
             
             <nav class="navbar">
-                <ul class="nav-links">
+                <div class="menu-toggle" id="mobile-menu">
+                    ☰
+                </div>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#">Beranda</a></li>
                     <li><a href="#menu-favorit">Menu</a></li>
                     <li><a href="#contact">Info</a></li>
@@ -62,27 +73,28 @@
                 </div>
             </div>
         </section>
+        
         <section id="menu-favorit" class="menu-section">
             <div class="container">
                 <h2>Menu Favorit Kami</h2>
                 <div class="menu-grid">
                     <article class="menu-card">
-                        <img src="assets\coffe.webp" alt="Kopi" class="foto-menu">
+                        <img src="assets/coffe.webp" alt="Kopi" class="foto-menu">
                         <h3>Artisan Coffee</h3>
                         <p>Pilihan biji kopi lokal terbaik. Mulai dari Espresso pekat hingga Latte yang lembut.</p>
                     </article>
                     <article class="menu-card">
-                        <img src="assets\waffle.webp" alt="Waffle" class="foto-menu">
+                        <img src="assets/waffle.webp" alt="Waffle" class="foto-menu">
                         <h3>Crispy Waffle</h3>
                         <p>Waffle hangat yang renyah di luar dan lembut di dalam, dengan siraman sirup maple.</p>
                     </article>
                     <article class="menu-card">
-                        <img src="assets\tea.webp" alt="Teh" class="foto-menu">
+                        <img src="assets/tea.webp" alt="Teh" class="foto-menu">
                         <h3>Teh Relaksasi</h3>
                         <p>Seduhan teh daun asli pilihan untuk menemani hari Anda. Earl grey, chamomile, dan jasmine.</p>
                     </article>
                     <article class="menu-card">
-                        <img src="assets\matcha.webp" alt="Matcha" class="foto-menu">
+                        <img src="assets/matcha.webp" alt="Matcha" class="foto-menu">
                         <h3>Premium Matcha</h3>
                         <p>Matcha otentik dengan dominan rasa umami yang khas, disajikan dingin maupun hangat.</p>
                     </article>
@@ -143,5 +155,21 @@
         </div>
     </footer>
 
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        // Saat icon hamburger diklik, tambahkan/hapus class 'active'
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Menutup menu mobile saat salah satu link diklik (opsional tapi UX-nya bagus)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

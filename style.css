@@ -12,6 +12,10 @@
     --peach-tombol: #fca079; 
 }
 
+html {
+    scroll-behavior: smooth; /* Navigasi halus saat klik menu */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +44,7 @@ body {
 }
 
 /* =======================================================
-   3. HERO SECTION & NAVBAR (FLEXBOX TERBARU)
+   3. HERO SECTION & NAVBAR 
    ======================================================= */
 .hero {
     background-image: url('assets/cafe.webp');
@@ -50,20 +54,28 @@ body {
     height: 100vh;
 }
 
-/* Pengaturan Flexbox Vertikal: Atas, Tengah, Bawah */
 .hero-overlay {
     background-color: rgba(0, 0, 0, 0.6);
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Membuat jarak otomatis ke atas dan bawah */
-    padding: 40px 50px; /* Padding tepi layar (Kiri, Kanan, Atas, Bawah) */
+    justify-content: space-between;
+    padding: 40px 50px;
 }
 
-/* Navbar Flexbox (Kiri Atas) */
 .navbar {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    position: relative; 
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; 
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--putih-teks);
 }
 
 .nav-links {
@@ -83,7 +95,6 @@ body {
 
 .nav-links a:hover { color: var(--coklat-muda); }
 
-/* Hero Center (Tengah) */
 .hero-center {
     display: flex;
     flex-direction: column;
@@ -123,7 +134,6 @@ body {
     border-color: var(--latte);
 }
 
-/* Hero Bottom Info (Kiri & Kanan Bawah) */
 .hero-bottom-info {
     display: flex;
     justify-content: space-between;
@@ -158,31 +168,30 @@ body {
 }
 
 /* =======================================================
-   4. GALERI BENTO BOX (FULL WIDTH)
+   4. GALERI BENTO BOX 
    ======================================================= */
 .album-section-full {
-    padding: 20px 0; /* Jarak background atas-bawah */
-    background-color: var(--krem-terang); /* Bisa disesuaikan dengan warna background web Anda */
+    padding: 20px 0; 
+    background-color: var(--krem-terang); 
     width: 100%;
 }
 
 .bento-gallery-full {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 350px); /* Saya tinggikan jadi 350px agar fotonya lebih gagah saat layar lebar */
-    gap: 5px; /* Ini dia "garis kecil" pemisahnya (15 pixel) */
-    padding: 0 15px; /* Memberi sedikit jarak 15px di ujung paling kiri dan kanan layar agar estetik */
+    grid-template-rows: repeat(2, 350px); 
+    gap: 5px; 
+    padding: 0 15px; 
     width: 100%;
-    max-width: 1600px; /* Batas maksimal di layar yang sangat besar (seperti TV) agar tidak pecah */
-    margin: 0 auto; /* Tetap ke tengah jika dibuka di monitor super lebar */
+    max-width: 1600px; 
+    margin: 0 auto; 
 }
 
-/* Kotak pembungkus gambar */
 .bento-item {
-    border-radius: 11px; /* Sudut membulat seperti di referensi gambar Anda */
+    border-radius: 11px; 
     overflow: hidden; 
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Bayangan tipis */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
 .bento-item img {
@@ -190,31 +199,22 @@ body {
     height: 100%;
     object-fit: cover; 
     transition: transform 0.5s ease; 
+    
+    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
-/* Efek zoom saat disentuh kursor */
 .bento-item:hover img {
-    transform: scale(1.50); /* Zoom diperhalus */
+    transform: scale(1.05); /* Skala zoom disesuaikan agar gambar tidak pecah */
 }
 
-/* Mengatur Posisi Asimetris Masing-Masing Foto */
 .bento-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
 .bento-2 { grid-column: 3 / 5; grid-row: 1 / 2; }
 .bento-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
 .bento-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
-
-/* CSS Bento untuk Layar HP */
-@media (max-width: 768px) {
-    .bento-gallery-full {
-        grid-template-columns: 1fr; /* Jadi 1 kolom bersusun ke bawah */
-        grid-template-rows: auto;
-    }
-    .bento-item {
-        grid-column: 1 / -1 !important; 
-        grid-row: auto !important;
-        height: 300px; /* Tinggi seragam di HP */
-    }
-}
 
 /* =======================================================
    5. MENU FAVORIT & MENU LIST
@@ -243,6 +243,11 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .menu-card:hover {
@@ -258,12 +263,16 @@ body {
     border-radius: 10px;
     margin-bottom: 15px;
     background-color: var(--coklat-muda);
+    
+    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .menu-card h3 { color: var(--coklat-kopi); font-size: 1.5rem; margin-bottom: 10px; }
 .menu-card p { font-size: 0.95rem; opacity: 0.8; }
 
-/* Menu Lengkap Layout */
 .daftar-menu-section { padding: 40px 0 100px; }
 
 .daftar-menu-container {
@@ -299,21 +308,18 @@ body {
 .harga-item { font-weight: bold; color: var(--coklat-kopi); padding-left: 10px; background-color: var(--krem-terang); z-index: 2; }
 
 /* =======================================================
-   6. CTA / PRE-FOOTER (KONTAK BISNIS)
+   6. CTA / PRE-FOOTER
    ======================================================= */
 .cta-section {
-    /* Background gambar yang Anda tambahkan */
     background-image: url('assets/abstract-blur-cafe-coffee-shop_1339-93361.webp'); 
     background-size: cover;
     background-position: center;
     color: var(--putih-teks);
     padding: 100px 0;
-    /* Tambahan agar gambar agak gelap sehingga teks putih mudah dibaca */
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: overlay;
 }
 
-/* Membuat Layout Menyamping (Kiri-Kanan) */
 .cta-section .container {
     display: flex;
     justify-content: center;
@@ -321,7 +327,6 @@ body {
     gap: 40px;
 }
 
-/* Kotak Border Teks */
 .cta-section h2 { 
     font-size: 2.2rem; 
     margin-bottom: 0; 
@@ -341,7 +346,7 @@ body {
     font-weight: 800;
     font-size: 1.1rem;
     transition: transform 0.3s ease;
-    white-space: nowrap; /* Mencegah teks tombol terpotong */
+    white-space: nowrap; 
 }
 
 .btn-contact:hover { transform: scale(1.05); }
@@ -374,18 +379,63 @@ body {
    ======================================================= */
 @media (max-width: 768px) {
     .hero-overlay { padding: 20px; }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: rgba(74, 44, 17, 0.95); 
+        padding: 20px 0;
+        text-align: center;
+        border-radius: 10px;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 0;
+        font-size: 1.2rem;
+    }
+    
+    .hero-center h1 {
+        font-size: 2.8rem;
+    }
+
     .hero-bottom-info {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
     }
     
-    /* CTA kembali bertumpuk atas-bawah di HP */
+    .bento-gallery-full {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .bento-item {
+        grid-column: 1 / -1 !important; 
+        grid-row: auto !important;
+        height: 300px; 
+    }
+
     .cta-section .container {
         flex-direction: column;
         text-align: center;
         gap: 20px;
     }
+    
     .cta-section h2 {
         font-size: 1.8rem;
         padding: 15px 20px;
