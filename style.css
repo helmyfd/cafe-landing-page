@@ -1,6 +1,4 @@
-/* =======================================================
-   1. VARIABEL & RESET
-   ======================================================= */
+/* 1. VARIABEL & RESET */
 :root {
     --coklat-kopi: #4a2c11; 
     --coklat-prefooter: #5c3415; 
@@ -13,7 +11,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Navigasi halus saat klik menu */
+    scroll-behavior: smooth;
 }
 
 * {
@@ -30,9 +28,17 @@ body {
     overflow-x: hidden;
 }
 
-/* =======================================================
-   2. GLOBAL LAYOUT (CONTAINER)
-   ======================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Menghindari flicker saat gambar di-load atau saat ada animasi */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* 2. GLOBAL LAYOUT (CONTAINER) */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -43,9 +49,7 @@ body {
     text-align: center;
 }
 
-/* =======================================================
-   3. HERO SECTION & NAVBAR 
-   ======================================================= */
+/* 3. HERO SECTION & NAVBAR */
 .hero {
     background-image: url('assets/cafe.webp');
     background-size: cover;
@@ -167,9 +171,7 @@ body {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* =======================================================
-   4. GALERI BENTO BOX 
-   ======================================================= */
+/* 4. GALERI BENTO BOX */
 .album-section-full {
     padding: 20px 0; 
     background-color: var(--krem-terang); 
@@ -199,16 +201,12 @@ body {
     height: 100%;
     object-fit: cover; 
     transition: transform 0.5s ease; 
-    
-    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     transform: translateZ(0);
     will-change: transform;
 }
 
 .bento-item:hover img {
-    transform: scale(1.05); /* Skala zoom disesuaikan agar gambar tidak pecah */
+    transform: scale(1.05);
 }
 
 .bento-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
@@ -216,9 +214,8 @@ body {
 .bento-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
 .bento-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
 
-/* =======================================================
-   5. MENU FAVORIT & MENU LIST
-   ======================================================= */
+/*   5. MENU FAVORIT & MENU LIST
+*/
 .menu-section {
     padding: 80px 0 40px;
     text-align: center;
@@ -243,10 +240,6 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     transform: translateZ(0);
 }
 
@@ -263,11 +256,6 @@ body {
     border-radius: 10px;
     margin-bottom: 15px;
     background-color: var(--coklat-muda);
-    
-    /* --- FIX: Solusi Anti Flicker & Reload GPU Acceleration --- */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
 
 .menu-card h3 { color: var(--coklat-kopi); font-size: 1.5rem; margin-bottom: 10px; }
@@ -307,9 +295,7 @@ body {
 .garis-titik { flex-grow: 1; border-bottom: 2px dotted var(--coklat-muda); position: relative; top: -5px; }
 .harga-item { font-weight: bold; color: var(--coklat-kopi); padding-left: 10px; background-color: var(--krem-terang); z-index: 2; }
 
-/* =======================================================
-   6. CTA / PRE-FOOTER
-   ======================================================= */
+/* 6. CTA / PRE-FOOTER */
 .cta-section {
     background-image: url('assets/abstract-blur-cafe-coffee-shop_1339-93361.webp'); 
     background-size: cover;
@@ -351,9 +337,7 @@ body {
 
 .btn-contact:hover { transform: scale(1.05); }
 
-/* =======================================================
-   7. FOOTER
-   ======================================================= */
+/* 7. FOOTER */
 .main-footer {
     background-color: var(--krem-terang);
     padding: 50px 0;
@@ -374,9 +358,7 @@ body {
 .sosmed-links a { color: var(--teks-gelap); text-decoration: none; font-weight: 700; transition: color 0.3s; }
 .sosmed-links a:hover { color: var(--coklat-kopi); }
 
-/* =======================================================
-   8. RESPONSIVE (MOBILE)
-   ======================================================= */
+/* 8. RESPONSIVE (MOBILE) */
 @media (max-width: 768px) {
     .hero-overlay { padding: 20px; }
     
@@ -443,5 +425,9 @@ body {
 
     .footer-flex, .daftar-menu-container {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
+    
+    .footer-right { margin-top: 30px; }
 }
